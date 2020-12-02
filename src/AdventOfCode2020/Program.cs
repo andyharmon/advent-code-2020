@@ -9,7 +9,7 @@ namespace AdventOfCode2020
         {
             Console.WriteLine("--- Advent of Code 2020 ---");
 
-            IDay day = new Day1();
+            IDay day = new Day2();
             day.Run();
 
             Console.WriteLine("Goodbye!");
