@@ -34,23 +34,32 @@ namespace AdventOfCode2020.Days
 
             int one = 0;
             int two = 0;
+            int three = 0;
             bool found = false;
 
             for (int i = 0; i < numbers.Length; i++)
             {
                 for (int x = 0; x < numbers.Length; x++)
                 {
-                    int result = numbers[i] + numbers[x];
-                    if (result <= 2020)
+                    for (int y = 0; y < numbers.Length; y++)
                     {
-                        if (result == 2020)
+                        int result = numbers[i] + numbers[x] + numbers[y];
+                        if (result <= 2020)
                         {
-                            one = numbers[i];
-                            two = numbers[x];
-                            found = true;
+                            if (result == 2020)
+                            {
+                                one = numbers[i];
+                                two = numbers[x];
+                                three = numbers[y];
+                                found = true;
+                            }
+                        }
+                        else
+                        {
+                            break;
                         }
                     }
-                    else
+                    if (found)
                     {
                         break;
                     }
@@ -61,7 +70,7 @@ namespace AdventOfCode2020.Days
                 }
             }
 
-            Console.WriteLine($"The answer is {one * two}");
+            Console.WriteLine($"The answer is {one * two * three}");
 
         }
     }
