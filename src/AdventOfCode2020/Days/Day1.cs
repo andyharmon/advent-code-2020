@@ -27,19 +27,42 @@ namespace AdventOfCode2020.Days
     {
         public void Run()
         {
-            // example:
-            List<int> example = new List<int>()
-            {
-                1721,
-                979,
-                366,
-                299,
-                675,
-                1456
-            };
-
             // convert file to list of ints
-            var file = File.ReadAllLines("~/Inputs/day1.txt");
+            var file = File.ReadAllLines(Directory.GetCurrentDirectory());
+            int[] numbers = Array.ConvertAll(file, s => int.Parse(s));
+            Array.Sort(numbers);
+
+            int one = 0;
+            int two = 0;
+            bool found = false;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                for (int x = 0; x < numbers.Length; x++)
+                {
+                    int result = numbers[i] + numbers[x];
+                    if (result <= 2020)
+                    {
+                        if (result == 2020)
+                        {
+                            one = numbers[i];
+                            two = numbers[x];
+                            found = true;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (found)
+                {
+                    break;
+                }
+            }
+
+            Console.WriteLine($"The answer is {one * two}");
+
         }
     }
 }
