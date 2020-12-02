@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace AdventOfCode2020.Days
@@ -8,14 +9,9 @@ namespace AdventOfCode2020.Days
     {
         public void Run()
         {
-            // example
             int runningTotal = 0;
-            List<string> passwords = new List<string>
-            {
-                "1-3 a: abcde",
-                "1-3 b: cdefg",
-                "2-9 c: ccccccccc"
-            };
+            var file = File.ReadAllLines(Path.Combine(Environment.CurrentDirectory, "Inputs/day2.txt"));
+            List<string> passwords = new List<string>(file);
 
             foreach (var password in passwords)
             {
@@ -32,11 +28,13 @@ namespace AdventOfCode2020.Days
 
                 // do search
                 int passwordLetterCount = PasswordElements[1].Count(l => l == letterToSearch);
-                if (passwordLetterCount > lowerBound && passwordLetterCount < upperBound)
+                if (passwordLetterCount >= lowerBound && passwordLetterCount <= upperBound)
                 {
                     runningTotal++;
                 }
             }
+
+            Console.WriteLine($"The answer is {runningTotal}");
         }
     }
 }
