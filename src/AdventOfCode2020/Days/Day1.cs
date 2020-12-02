@@ -28,7 +28,7 @@ namespace AdventOfCode2020.Days
         public void Run()
         {
             // convert file to list of ints
-            var file = File.ReadAllLines(Directory.GetCurrentDirectory());
+            var file = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), "Inputs/day1.txt"));
             int[] numbers = Array.ConvertAll(file, s => int.Parse(s));
             Array.Sort(numbers);
 
