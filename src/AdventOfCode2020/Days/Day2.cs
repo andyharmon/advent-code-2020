@@ -26,10 +26,14 @@ namespace AdventOfCode2020.Days
                 // get character to search
                 char letterToSearch = char.Parse(policy[1]);
 
+                // sanitise PasswordElements[1]
+                PasswordElements[1] = PasswordElements[1][1..];
+
                 // do search
                 if (PasswordElements[1][location1] == letterToSearch
-                    && PasswordElements[1][location2] == letterToSearch)
+                    ^ PasswordElements[1][location2] == letterToSearch)
                 {
+                    Console.WriteLine(password);
                     runningTotal++;
                 }
             }
