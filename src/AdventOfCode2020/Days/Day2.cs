@@ -19,16 +19,16 @@ namespace AdventOfCode2020.Days
                 string[] policy = PasswordElements[0].Split(' ');
 
                 // get bounds
-                var boundStrings = policy[0].Split('-');
-                int lowerBound = int.Parse(boundStrings[0]);
-                int upperBound = int.Parse(boundStrings[1]);
+                var locationStrings = policy[0].Split('-');
+                int location1 = int.Parse(locationStrings[0]) - 1;
+                int location2 = int.Parse(locationStrings[1]) - 1;
 
                 // get character to search
                 char letterToSearch = char.Parse(policy[1]);
 
                 // do search
-                int passwordLetterCount = PasswordElements[1].Count(l => l == letterToSearch);
-                if (passwordLetterCount >= lowerBound && passwordLetterCount <= upperBound)
+                if (PasswordElements[1][location1] == letterToSearch
+                    && PasswordElements[1][location2] == letterToSearch)
                 {
                     runningTotal++;
                 }
